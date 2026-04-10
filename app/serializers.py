@@ -27,3 +27,7 @@ class BookSerializer(serializers.ModelSerializer):
             if Book.objects.filter(title=data['title'], author=data['author']).exists():
                 raise serializers.ValidationError("A book with this title and author already exists.")
         return data
+    
+    def create(self, validated_data):
+        validated_data['title'] = validated_data['title'].upper()
+        return Book.objects.create(**validated_data)
