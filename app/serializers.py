@@ -21,3 +21,9 @@ class BookSerializer(serializers.ModelSerializer):
         if len(value) > 100 or len(value) < 2:
             raise serializers.ValidationError("Author name must be between 2 and 100 characters.")
         return value
+    
+    def validate(self, data):
+        if 'title' in data and 'author' in data:
+            if Book.objects.filter(title=data['title'], author=data['author']).exists():
+                raise serializers.ValidationError("A book with this title and author already exists.")
+        return data
