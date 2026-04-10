@@ -16,3 +16,8 @@ class BookSerializer(serializers.ModelSerializer):
         if len(value) > 100 or len(value) < 2:
             raise serializers.ValidationError("Title must be between 2 and 100 characters.")
         return value
+    
+    def validate_author(self, value):
+        if len(value) > 100 or len(value) < 2:
+            raise serializers.ValidationError("Author name must be between 2 and 100 characters.")
+        return value
