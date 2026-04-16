@@ -118,6 +118,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#global settings for DRF authentication and permissions
+
 # REST_FRAMEWORK = {
 #    'DEFAULT_AUTHENTICATION_CLASSES': [
 #        'rest_framework.authentication.BasicAuthentication',
